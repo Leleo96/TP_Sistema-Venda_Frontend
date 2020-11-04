@@ -38,12 +38,13 @@ export default class Main extends Component {
 
 
                 <h1> COMANDA</h1>
-                <Link to={`/criarpedido`}> <button type="button" class="btn btn-success">Abrir Comanda</button> </Link>
-                <br /><br />
+                <div class="menucontent">
+                    <Link to={`/criarpedido`}> <button type="button" class="btn btn-success">Abrir Comanda</button> </Link>
+                    <br /><br />
 
-                <Link to={`/criaritempedido`}> <button type="button" class="btn btn-success">Incluir Item</button> </Link>
-                <br /><br />
-
+                    <Link to={`/criaritempedido`}> <button type="button" class="btn btn-success">Incluir Item</button> </Link>
+                    <br /><br />
+                </div>
 
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -46,3 +46,11 @@
     justify-content: center;
     margin-left: 400px;
 }
+
+.menucontent {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 13%;
+}
+
+

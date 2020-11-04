@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './index.css';
 
@@ -119,8 +119,8 @@ class CriarUsuario extends Component {
                                 Inativo
                         </radio>
                         </div>
-                        <Link to={`/usuarios`}>  <button type="submit" className="btn btn-primary">Cadastrar</button> </Link>
-                        <Link to={`/usuarios`}> <button type="submit" className="btn btn-primary">Voltar</button> </Link>
+                        <button type="submit" className="btn btn-primary">Cadastrar</button>
+                        <Link to={`/usuarios`}> <button className="btn btn-primary">Voltar</button></Link>
                     </fieldset>
                 </form>
             );
@@ -146,6 +146,10 @@ class CriarUsuario extends Component {
                 "Content-Type": "application/json"
             }
         })
+
+        const history = useHistory();
+
+        history.push("/usuarios");
 
         event.preventDefault();
     };
