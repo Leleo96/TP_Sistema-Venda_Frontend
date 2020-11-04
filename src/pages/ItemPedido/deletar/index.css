@@ -1,0 +1,29 @@
+.itempedido-delete input{
+    background: aliceblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: dimgray;
+    
+}
+
+.itempedido-delete label{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size:35px ;
+}
+
+fieldset{
+    text-align: center;    
+    margin-left: 20px;
+}
+legend {    
+    font-size: 45px;
+    margin-top: 25px;
+    
+}

@@ -1,0 +1,30 @@
+legend {
+    text-align: center;
+    margin-top: 40px;
+}
+.itempedido-insert radio{    
+    text-align: center;
+}
+.itempedido-insert radioa{   
+    text-align: center;
+}
+
+.itempedido-insert input{
+    background: aliceblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: dimgray;
+    
+}
+
+.itempedido-insert label{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    
+}
