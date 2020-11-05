@@ -2,14 +2,14 @@ legend {
     text-align: center;
     margin-top: 40px;
 }
-.pedido-insert radio{    
+.pedido-insert radio {     
     text-align: center;
 }
-.pedido-insert radioa{   
+.pedido-insert radioa {   
     text-align: center;
 }
 
-.pedido-insert input{
+.pedido-insert input {
     background: aliceblue;
     border: 1px solid black;
     border-radius: 5px;
@@ -21,10 +21,9 @@ legend {
     
 }
 
-.pedido-insert label{
+.pedido-insert label {
     font-size: 20px;
     color: black;
     font-weight: bold;
-    text-align: center;
-    
+    text-align: center;  
 }

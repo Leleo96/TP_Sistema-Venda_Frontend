@@ -38,9 +38,9 @@ export default class Usuario extends Component {
                     <br />
                 </div >
                 <div className="links">
-                    <Link to={`/usuarios`}> Voltar </Link> <br />
-                    <Link to={`/editarusuario/id${usuario.id}`}> Editar </Link> <br />
-                    <Link to={`/deletarusuario/id${usuario.id}`}> Deletar </Link> <br />
+                    <Link to={`/usuarios`} className="btn btn-success"> Voltar </Link>
+                    <Link to={`/editarusuario/id${usuario.id}`} className="btn btn-warning"> Editar </Link>
+                    <Link to={`/deletarusuario/id${usuario.id}`} className="btn btn-danger"> Deletar </Link>
                 </div>
             </div>
         );

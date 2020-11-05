@@ -10,62 +10,86 @@ export default class Main extends Component {
         super(props);
 
         this.state = {
+            usuario: [],   
+            usuarioAtivo:{
+                id: ''
+            }, 
             itempedido: [],
+            pedido:{
+                id: ''
+            },
             erro: null
         };
+
     }
+
     componentDidMount() {
-        fetch(`http://localhost:3003/sistema/itempedidos`)
-            .then(itempedido =>
-                itempedido.json().then(itempedido => this.setState({ itempedido }))
+        fetch(`http://localhost:3003/sistema/usuarios`)
+            .then(usuario =>
+                usuario.json().then(usuario => this.setState({ usuario }))
             )
             .catch(erro => this.setState({ erro }));
     }
 
+    criarPedido = event => {
+
+        fetch("http://localhost:3003/sistema/pedidos", {
+            method: "post",
+            body: JSON.stringify(this.state.pedido),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => {
+			if (response.status === 200) {
+				response.json().then((json) => {
+					if (json != null) {
+                        this.setState.pedido.id = json.id;
+                        console.log(this.state.pedido.id);
+					}
+				});
+			} else {
+				this.setState({ erro: 'Falha na criação de um novo pedido.' });
+			}
+		});
+
+        event.preventDefault();
+    }
+
+
+  
+
+
     render() {
+        const { usuario } = this.state;
         const { itempedido } = this.state;
         return (
 
             <div className="itempedido-list">
 
                 <Navbar>
-                    <Link to={`/usuarios`}> <button type="button" class="btn-cadastro">CADASTRAR CLIENTES</button> </Link>
-                    <br /><br />
-                    <Link to={`/produtos`}> <button type="button" class="btn-cadastro">CADASTRAR PRODUTOS</button> </Link>
-                    <br /><br />
+                    <div className="menucontent">
+                        <Link to={`/usuarios`}> <button type="button" class="btn btn-primary">CADASTRAR CLIENTES</button> </Link>
+                        <br /><br />
+                        <Link to={`/produtos`}> <button type="button" class="btn btn-info">CADASTRAR PRODUTOS</button> </Link>
+                        <br /><br />
+                        </div>
                 </Navbar>
 
 
 
-                <h1> COMANDA</h1>
-                <div class="menucontent">
-                    <Link to={`/criarpedido`}> <button type="button" class="btn btn-success">Abrir Comanda</button> </Link>
-                    <br /><br />
+                <h1> COMANDA</h1>            
 
-                    <Link to={`/criaritempedido`}> <button type="button" class="btn btn-success">Incluir Item</button> </Link>
-                    <br /><br />
-                </div>
+                <div className="btnGroup">
 
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        CLIENTES <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="/usuarios">Pesquisar</a></li>
-                        <li><a href="/criarusuario">Cadastrar</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/usuarios">Excluir</a></li>
-                    </ul>
+                    <select className="custom-select" name="selectCliente" id="selectCliente" onChange={e => this.setState.usuarioAtivo.id = e.target.value}>
+                        <option value="" selected disabled>Selecione o cliente</option>                                                        
+                        {usuario.map((usuario, index) => (
+                            <option value="{usuario.id}">{usuario.nome}</option>                                                        
+                        ))}
+                    </select>    
 
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        PRODUTOS <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Pesquisar</a></li>
-                        <li><a href="#">Cadastrar</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Excluir</a></li>
-                    </ul>
+                    <button type="button" class="btn btn-success">Abrir Comanda</button>                    
+                    
                 </div>
 
 

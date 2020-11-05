@@ -64,6 +64,7 @@ export default class Main extends Component {
                     </tbody>
 
                 </table>
+                <td> <Link to={`/`}> <button type="button" class="btn btn-primaty">Voltar</button> </Link></td>
             </div>
         )
     }

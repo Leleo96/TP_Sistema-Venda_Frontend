@@ -55,13 +55,13 @@ class DeletarUsuario extends Component {
                         <label htmlFor="nome">{this.state.usuario.nome} </label>
                         <p>Tem certeza que deseja deletar este registro?</p>
 
-                        <button
+                        <button className="btn btn-warning"
                             onClick={this.handleClick}
                         >
                             Remover
                         </button>
                         <br /><br />
-                        < Link to={`/usuarios`}>Voltar</Link>
+                        < Link to={`/usuarios`} className="btn btn-success">Voltar</Link>
                     </div>
                 </fieldset>
             );

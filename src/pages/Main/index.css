@@ -3,6 +3,15 @@
     padding: 0 20px;
     max-width: 700px;
 }
+
+.btnGroup{
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+}
+.btnGroup button{
+    margin-left: 1rem;
+}
 .itempedido-list th {
     text-align: center;
 }
@@ -49,8 +58,11 @@
 
 .menucontent {
     display: flex;
-    justify-content: space-between;
-    margin-left: 13%;
+    justify-content: space-between;       
 }
+.menucontent button{
+    margin: 0.5rem;
+}
+
 
 

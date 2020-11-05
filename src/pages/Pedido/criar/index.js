@@ -42,13 +42,39 @@ class CriarPedido extends Component {
                     <fieldset>
                         <legend>Novo Cadastro de Pedidos</legend>
                         <div className="pedido-insert">
-                            <label htmlFor="nome">observacoes </label>
+                            <label htmlFor="valorTotal">Valor Total </label>
+                            <br />
+                            <input
+                                type="double"
+                                id="valorTotal"
+                                name="valorTotal"
+                                placeholder=""
+                                required
+                                value={this.state.pedido.valorTotal}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="pedido-insert">
+                            <label htmlFor="usuarioId">Usuário Id </label>
+                            <br />
+                            <input
+                                type="integer"
+                                id="usuarioId"
+                                name="usuarioId"
+                                placeholder=""
+                                required
+                                value={this.state.pedido.usuarioId}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="pedido-insert">
+                            <label htmlFor="nome">Observações </label>
                             <br />
                             <input
                                 type="text"
                                 id="observacoes"
                                 name="observacoes"
-                                placeholder="observacoes"
+                                placeholder=""
                                 minLength="3"
                                 maxLength="100"
                                 required
@@ -56,57 +82,29 @@ class CriarPedido extends Component {
                                 onChange={this.handleInputChange}
                             />
                         </div>
-                        <div className="pedido-insert">
-                            <label htmlFor="valorTotal">valor Total </label>
-                            <br />
-                            <input
-                                type="double"
-                                id="valorTotal"
-                                name="valorTotal"
-                                placeholder="valorTotal"
-                                required
-                                value={this.state.pedido.valorTotal}
-                                onChange={this.handleInputChange}
-                            />
-                        </div>
-                        <div className="pedido-insert">
-                            <label htmlFor="usuarioId">usuario Id </label>
-                            <br />
-                            <input
-                                type="integer"
-                                id="usuarioId"
-                                name="usuarioId"
-                                placeholder="usuarioId"
-                                required
-                                value={this.state.pedido.usuarioId}
-                                onChange={this.handleInputChange}
-                            />
-                        </div>
-
-                        <div className="pedido-insert">
-                            <radioa>
-                                <input
-                                    type="radio"
-                                    name="ativo"
-                                    value="true"
-                                    checked={this.state.pedido.ativo === "true"}
-                                    onChange={this.handleInputChange}
-                                />
-                                Ativo
-                        </radioa>
-                            <radio>
-                                <input
-                                    type="radio"
-                                    value="false"
-                                    name="ativo"
-                                    checked={this.state.pedido.ativo === "false"}
-                                    onChange={this.handleInputChange}
-                                />
-                                Inativo
-                        </radio>
-                        </div>
+                            <div className="pedido-insert checkbox-isactive">
+                                <radioa>
+                                    <input
+                                        type="radio"
+                                        name="ativo"
+                                        value="true"
+                                        checked={this.state.pedido.ativo === "true"}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    Ativo
+                            </radioa>
+                                <radio>
+                                    <input
+                                        type="radio"
+                                        value="false"
+                                        name="ativo"
+                                        checked={this.state.pedido.ativo === "false"}
+                                        onChange={this.handleInputChange}
+                                    />
+                                    Inativo
+                            </radio>
+                            </div>
                         <button type="submit" className="btn btn-primary">Cadastrar</button>
-                        <p>Registro salvo com sucesso?</p>
                         <Link to={`/pedidos`}> <button type="submit" className="btn btn-primary">Voltar</button> </Link>
                     </fieldset>
                 </form>

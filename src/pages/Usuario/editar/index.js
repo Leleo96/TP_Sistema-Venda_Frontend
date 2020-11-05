@@ -35,6 +35,10 @@ class EditarUsuario extends Component {
         const { id } = this.props.match.params;
 
         fetch(`http://localhost:3003/sistema/usuarios/${id}`)
+        .then(usuario =>
+            usuario.json().then(usuario => this.setState({ usuario }))
+        )
+        .catch(erro => this.setState({ erro }));
 
     }
 

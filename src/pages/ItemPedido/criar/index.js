@@ -48,7 +48,7 @@ class CriarItemPedido extends Component {
                                 type="Integer"
                                 id="qtd"
                                 name="qtd"
-                                placeholder="qtd"
+                                placeholder=""
                                 minLength="3"
                                 maxLength="100"
                                 required
@@ -63,7 +63,7 @@ class CriarItemPedido extends Component {
                                 type="Double"
                                 id="valor"
                                 name="valor"
-                                placeholder="valor"
+                                placeholder=""
                                 required
                                 value={this.state.itemPedido.valor}
                                 onChange={this.handleInputChange}
@@ -76,7 +76,7 @@ class CriarItemPedido extends Component {
                                 type="produtoId"
                                 id="produtoId"
                                 name="produtoId"
-                                placeholder="produtoId"
+                                placeholder=""
                                 required
                                 value={this.state.itemPedido.produtoId}
                                 onChange={this.handleInputChange}
@@ -90,7 +90,7 @@ class CriarItemPedido extends Component {
                                 type="Integer"
                                 id="pedidoId"
                                 name="pedidoId"
-                                placeholder="pedidoId"
+                                placeholder=""
                                 required
                                 value={this.state.itemPedido.pedidoId}
                                 onChange={this.handleInputChange}
