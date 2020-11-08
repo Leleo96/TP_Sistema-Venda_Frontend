@@ -14,13 +14,13 @@ export default class itemPedido extends Component {
 	
 	componentDidMount() {
 		//const { pedidoID } = this.props.match.params;
-		fetch(`http://localhost:3003/sistema/itempedidos/${this.props.pedidoID}`)
+		fetch(`${process.env.REACT_APP_API_URL}/sistema/itempedidos/${this.props.pedidoID}`)
             .then(itemPedido =>
                 itemPedido.json().then(itemPedido => this.setState({ itemPedido }))
             )
 			.catch(erro => this.setState({ erro }));
 			
-		fetch(`http://localhost:3003/sistema/produtos`)
+		fetch(`${process.env.REACT_APP_API_URL}/sistema/produtos`)
             .then(produto =>
                 produto.json().then(produto => this.setState({ produto }))
             )
@@ -106,7 +106,7 @@ export default class itemPedido extends Component {
 		
 		const id = this.state.itemPedido.id;
 		
-		fetch(`http://localhost:3003/sistema/itempedidos/${id}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/sistema/itempedidos/${id}`, {
 			method: "delete"
 		})
 		

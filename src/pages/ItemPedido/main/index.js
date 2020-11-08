@@ -13,7 +13,7 @@ export default class Main extends Component {
         };
     }
     componentDidMount() {
-        fetch(`http://localhost:3003/sistema/itempedidos`)
+        fetch(`${process.env.REACT_APP_API_URL}/sistema/itempedidos`)
             .then(itemPedido =>
                 itemPedido.json().then(itemPedido => this.setState({ itemPedido }))
             )

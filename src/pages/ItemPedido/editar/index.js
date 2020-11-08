@@ -34,7 +34,7 @@ class EditarItemPedido extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
 
-        fetch(`http://localhost:3003/sistema/itemPedidos/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/sistema/itemPedidos/${id}`)
 
     }
 
@@ -132,7 +132,7 @@ class EditarItemPedido extends Component {
     handleSubmit = event => {
         const { id } = this.state.itemPedido;
 
-        fetch(`http://localhost:3003/sistema/itemPedidos/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/sistema/itemPedidos/${id}`, {
             method: "put",
             body: JSON.stringify(this.state.itemPedido),
             headers: {

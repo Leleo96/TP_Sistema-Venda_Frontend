@@ -139,7 +139,7 @@ class CriarItemPedido extends Component {
     };
 
     handleSubmit = event => {
-        fetch("http://localhost:3003/sistema/itempedidos", {
+        fetch("${process.env.REACT_APP_API_URL}/sistema/itempedidos", {
             method: "post",
             body: JSON.stringify(this.state.itemPedido),
             headers: {

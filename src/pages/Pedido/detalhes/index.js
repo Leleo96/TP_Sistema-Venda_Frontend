@@ -10,7 +10,7 @@ export default class Pedido extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
 
-        fetch(`http://localhost:3003/sistema/pedidos/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/sistema/pedidos/${id}`)
             .then(pedido =>
                 pedido.json().then(pedido => this.setState({ pedido }))
             )

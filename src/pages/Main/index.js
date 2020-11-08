@@ -37,13 +37,13 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3003/sistema/usuarios`)
+        fetch(`${process.env.REACT_APP_API_URL}/sistema/usuarios`)
             .then(usuario =>
                 usuario.json().then(usuario => this.setState({ usuario }))
             )
             .catch(erro => this.setState({ erro }));
 
-        fetch(`http://localhost:3003/sistema/produtos`)
+        fetch(`${process.env.REACT_APP_API_URL}/sistema/produtos`)
             .then(produto =>
                 produto.json().then(produto => this.setState({ produto }))
             )
@@ -55,7 +55,7 @@ export default class Main extends Component {
 
         this.setState({ activeForm: true });
 
-        fetch("http://localhost:3003/sistema/pedidos", {
+        fetch("${process.env.REACT_APP_API_URL}/sistema/pedidos", {
             method: "post",
             body: JSON.stringify(this.state.pedido),
             headers: {
@@ -82,7 +82,7 @@ export default class Main extends Component {
 
     fecharPedido = event => {
 
-        fetch(`http://localhost:3003/sistema/pedidos/${this.state.pedido.id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/sistema/pedidos/${this.state.pedido.id}`, {
             method: "put",
             body: JSON.stringify(this.state.pedido),
             headers: {
@@ -122,7 +122,7 @@ export default class Main extends Component {
 
             this.calculaPrecoTotal(this.state.itempedido.valor * this.state.itempedido.qtd)
 
-            fetch("http://localhost:3003/sistema/itempedidos", {
+            fetch("${process.env.REACT_APP_API_URL}/sistema/itempedidos", {
                 method: "post",
                 body: JSON.stringify(this.state.itempedido),
                 headers: {
