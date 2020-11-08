@@ -2,10 +2,12 @@ legend {
     text-align: center;
     margin-top: 40px;
 }
-.produto-insert radio{    
+.produto-insert radio{
+    margin-left: 1%;    
     text-align: center;
 }
-.produto-insert radioa{   
+.produto-insert radioa{ 
+    margin-right: 1%;  
     text-align: center;
 }
 
@@ -27,4 +29,8 @@ legend {
     font-weight: bold;
     text-align: center;
     
+}
+.btn {
+    margin-right: 0.5%;
+    margin-left: 0.5%;
 }

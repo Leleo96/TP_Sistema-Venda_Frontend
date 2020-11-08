@@ -38,7 +38,7 @@ class CriarUsuario extends Component {
             return <Redirect to="/usuarios" />;
         } else {
             return (
-                <form onSubmit={this.handleSubmit}>
+                <form action="/usuarios" onSubmit={this.handleSubmit}>
                     <fieldset>
                         <legend>Novo Cadastro de Cliente</legend>
                         <div className="usuario-insert">
@@ -102,25 +102,25 @@ class CriarUsuario extends Component {
                                 <input
                                     type="radio"
                                     name="ativo"
-                                    value="true"
-                                    checked={this.state.usuario.ativo === "true"}
-                                    onChange={this.handleInputChange}
-                                />
-                                Ativo
-                        </radioa>
-                            <radio>
-                                <input
-                                    type="radio"
-                                    value="false"
-                                    name="ativo"
+                                    value="False"
                                     checked={this.state.usuario.ativo === "false"}
                                     onChange={this.handleInputChange}
                                 />
                                 Inativo
+                        </radioa>
+                            <radio>
+                                <input
+                                    type="radio"
+                                    value="true"
+                                    name="ativo"
+                                    checked={this.state.usuario.ativo === "true"}
+                                    onChange={this.handleInputChange}
+                                />
+                                Ativo
                         </radio>
                         </div>
-                        <button type="submit" className="btn btn-primary">Cadastrar</button>
                         <Link to={`/usuarios`}> <button className="btn btn-primary">Voltar</button></Link>
+                        <button type="submit" className="btn btn-success">Cadastrar</button>
                     </fieldset>
                 </form>
             );
@@ -146,12 +146,6 @@ class CriarUsuario extends Component {
                 "Content-Type": "application/json"
             }
         })
-
-        const history = useHistory();
-
-        history.push("/usuarios");
-
-        event.preventDefault();
     };
 }
 

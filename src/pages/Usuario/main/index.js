@@ -25,7 +25,6 @@ export default class Main extends Component {
         return (
             <div className="usuario-list">
                 <h1> Cadastro de Clientes</h1>
-                <Link to={`/criarusuario`}> <button type="button" class="btn btn-success">Incluir</button> </Link>
                 <br /><br />
 
                 <table class="table table-hover">
@@ -60,7 +59,8 @@ export default class Main extends Component {
                         ))}
                     </tbody>
                 </table>
-                <footer> <Link to={`/`}> <button type="button" class="btn btn-success">Voltar</button> </Link>
+                <footer> <Link to={`/`}> <button type="button" class="btn btn-primary">Voltar</button> </Link>
+                <Link to={`/criarusuario`}> <button type="button" class="btn-incluir btn btn-success">Incluir</button> </Link>
                     <br /><br /></footer>
             </div>
 

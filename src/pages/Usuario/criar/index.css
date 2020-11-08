@@ -28,3 +28,16 @@ legend {
     text-align: center;
     
 }
+.btn {
+    margin-right: 0.5%;
+    margin-left: 0.5%;
+}
+.usuario-insert radio {
+    margin-left: 1%;    
+    text-align: center;
+}
+.usuario-insert radioa { 
+    margin-right: 1%;  
+    text-align: center;
+}
+

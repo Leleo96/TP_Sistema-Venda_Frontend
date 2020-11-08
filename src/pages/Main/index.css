@@ -51,18 +51,37 @@
 }
 .btn-cadastro button{
     background: black;
+    color: lightseagreen;
     
     justify-content: center;
     margin-left: 400px;
 }
 
 .menucontent {
+    width: fill;
     display: flex;
     justify-content: space-between;       
 }
 .menucontent button{
     margin: 0.5rem;
 }
-
+.pedidoNcontainer {
+    margin-right: 5px;
+    padding-right: 0px;
+    min-width: 168px;
+}
+.custom-select {
+    min-width: 184px;
+}
+.btnCadastrar {
+    margin-left: auto!important;
+}
+.invisible {
+    display: none;
+}
+label {
+    display: initial;
+    margin: 0px 5px 0px;
+}
 
 

@@ -9,10 +9,10 @@ class CriarProduto extends Component {
 
         this.state = {
             produto: {
-                nome: "",
-                precocusto: "",
-                precovenda: "",
-                quantidade: "",
+                nome: '',
+                precocusto: 0,
+                precovenda: 0,
+                quantidade: 0,
                 ativo: "true"
             },
             erro: null,
@@ -98,29 +98,29 @@ class CriarProduto extends Component {
                         </div>
 
                         <div className="produto-insert">
-                            <radioa>
+                            <radioa className="">
                                 <input
                                     type="radio"
                                     name="ativo"
-                                    value="true"
-                                    checked={this.state.produto.ativo === "true"}
-                                    onChange={this.handleInputChange}
-                                />
-                                Ativo
-                        </radioa>
-                            <radio>
-                                <input
-                                    type="radio"
-                                    value="false"
-                                    name="ativo"
+                                    value="False"
                                     checked={this.state.produto.ativo === "false"}
                                     onChange={this.handleInputChange}
                                 />
                                 Inativo
+                        </radioa>
+                            <radio>
+                                <input
+                                    type="radio"
+                                    value="True"
+                                    name="ativo"
+                                    checked={this.state.produto.ativo === "true"}
+                                    onChange={this.handleInputChange}
+                                />
+                                Ativo
                         </radio>
                         </div>
-                        <button type="submit" className="btn btn-primary">Cadastrar</button>
                         <Link to={`/produtos`}> <button type="submit" className="btn btn-primary">Voltar</button> </Link>
+                        <button type="submit" className="btn btn-success">Cadastrar</button>               
                     </fieldset>
                 </form>
             );

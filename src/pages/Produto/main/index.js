@@ -27,7 +27,7 @@ export default class Main extends Component {
         return (
             <div className="produto-list">
                 <h1> Cadastro de Produto</h1>
-                <Link to={`/criarproduto`}> <button type="button" class="btn btn-success">Incluir</button> </Link>
+                
                 <br /><br />
 
                 <table class="table table-hover">
@@ -64,7 +64,8 @@ export default class Main extends Component {
                     </tbody>
 
                 </table>
-                <footer> <Link to={`/`}> <button type="button" class="btn btn-success">Voltar</button> </Link>
+                <footer> <Link to={`/`}> <button type="button" class="btn btn-primary">Voltar</button> </Link>
+                <Link to={`/criarproduto`}> <button type="button" class="btn-incluir btn btn-success">Incluir</button> </Link>
                     <br /><br /></footer>
             </div>
         )

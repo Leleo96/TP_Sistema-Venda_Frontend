@@ -40,3 +40,10 @@
     background: blue;
     color: #fff;
 }
+#footer {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-incluir {
+    margin-left: 77%!important;
+}
