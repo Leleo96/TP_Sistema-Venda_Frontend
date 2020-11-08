@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import ReactDOM from 'react-dom';
+import { Link, useHistory } from "react-router-dom";
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar } from 'react-bootstrap';
+import ItemPedido from '../../components/itemPedido';
 
 
 export default class Main extends Component {
@@ -27,7 +29,7 @@ export default class Main extends Component {
                 produtoID: '',
                 pedidoID: '',
             },
-            valorTotalProdutos: 0,
+            valorTotalProdutos: 0,            
             erro: null,
             activeForm: false
         };
@@ -66,14 +68,30 @@ export default class Main extends Component {
                         
                         this.setState(prevState => ({
                             pedido: { ...prevState.pedido, id: json.id }
-                        }));                    
-                        console.log(this.state.pedido);
+                        }));                                            
+                        console.log(this.state.pedido);  
 					}
 				});
 			} else {
 				this.setState({ erro: 'Falha na criação de um novo pedido.' });
 			}
 		});
+
+        event.preventDefault();
+    }
+
+    fecharPedido = event => {
+
+        fetch(`http://localhost:3003/sistema/pedidos/${this.state.pedido.id}`, {
+            method: "put",
+            body: JSON.stringify(this.state.pedido),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })	
+
+        window.location.reload(false);
+
 
         event.preventDefault();
     }
@@ -99,7 +117,10 @@ export default class Main extends Component {
 
     criarItemPedido = (event) =>  {
 
-            console.log(this.state.itempedido)
+            console.log("Valor Item: ",this.state.itempedido.valor)
+            console.log("Qtd Item: ",this.state.itempedido.qtd)
+
+            this.calculaPrecoTotal(this.state.itempedido.valor * this.state.itempedido.qtd)
 
             fetch("http://localhost:3003/sistema/itempedidos", {
                 method: "post",
@@ -115,7 +136,8 @@ export default class Main extends Component {
                             this.setState(prevState => ({
                                 itempedido: { ...prevState.itempedido, id: json.id }
                             }));                    
-                            console.log(this.state.itempedido);
+                            console.log(this.state.itempedido);                                       
+                            ReactDOM.render(<ItemPedido key={json.id} pedidoID={this.state.pedido.id}/>, document.getElementById('lista_compras'));                        
                         }
                     });
                 } else {
@@ -128,24 +150,15 @@ export default class Main extends Component {
     }
    
 
-    calculaPrecoTotal = (event) =>{        
+    calculaPrecoTotal = (valorItem) =>{       
 
-        this.state.produto.forEach(element => {
-            
-            if(element.id == this.state.itempedido.produtoID){
-                this.setState(prevState => ({
-                    itempedido: { ...prevState.itempedido, valor: element.precovenda }
-                }));
+        const soma = this.state.pedido.valorTotal + valorItem;
+        console.log(valorItem)
+        console.log(soma)
 
-                this.setState({valorTotalProdutos: element.precovenda * this.state.itempedido.qtd })
-
-
-                console.log("Valor: ", this.state.itempedido.valor) 
-                console.log("QTD: ", this.state.itempedido.qtd) 
-                console.log("Valor Total Produtos: ", this.state.valorTotalProdutos) 
-            }
-
-        })
+        this.setState(prevState => ({
+            pedido: { ...prevState.pedido, valorTotal: soma}
+        }));   
 
     }
 
@@ -203,7 +216,8 @@ export default class Main extends Component {
                         ))}
                     </select>    
 
-                    <button type="button" class="btn btn-success" onClick={this.criarPedido}>Abrir</button>                    
+                    <button type="button" class="btn btn-success" onClick={this.criarPedido}>Abrir</button>    
+                    <button type="button" class="btn btn-danger" onClick={this.fecharPedido}>Fechar</button>                
                     
                 </div>
 
@@ -235,24 +249,15 @@ export default class Main extends Component {
 
                         <button type="button" class="btn btn-success" onClick={this.criarItemPedido}>Incluir</button>                    
                         
-                    </div>                    
+                    </div>          
+                       
+                        <h4>Valor Total - R$ {Math.round(this.state.pedido.valorTotal).toFixed(2)}</h4>      
+                        <div name="lista_compras" id="lista_compras">
+                            <h1>Lista de Compras</h1>
+                                
 
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Qtd</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                    
-                        </tbody>
-
-                    </table>
+                        </div>                       
+                  
                 </div>
             </div>
             
